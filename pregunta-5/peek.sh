@@ -1,0 +1,1 @@
+gcc recursion.c -o out -O2 && ./out && rm ./out 
