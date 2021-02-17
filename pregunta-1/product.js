@@ -8,17 +8,8 @@ const product = (A, B) => {
   if (!preconditions(A, B))
     throw new Error('A y B deben ser matrices validas para el producto');
 
-  let result = new Array();
-
-  for (let a of A) {
-    let row = [];
-    for (let b of transpose(B)) {
-      row.push(sumArray(a.map((_, i) => a[i] * b[i])));
-    }
-    result.push(row);
-  }
-
-  return result;
+  let Bt = transpose(B);
+  return A.map((a) => Bt.map((b) => sumArray(a.map((_, i) => a[i] * b[i]))));
 };
 
 /**
