@@ -3,26 +3,6 @@ import unittest
 
 
 class TestBuddy(unittest.TestCase):
-    def test_representacion(self):
-        system = BuddySystem(120)
-        system.allocate(16, 'A')
-        system.allocate(1, 'B')
-        representantion = system.representation()
-
-        expected_representation = '\n-------- Bloques libres: \n'
-        expected_representation += '(31,32) | 2 blocks\n'
-        expected_representation += '(33,36) | 4 blocks\n'
-        expected_representation += '(37,44) | 8 blocks\n'
-        expected_representation += '(45,59) | 15 blocks\n'
-        expected_representation += '(60,119) | 60 blocks\n'
-        expected_representation += 'Total disponible: 89\n'
-        expected_representation += '\n-------- Bloques reservados: \n'
-        expected_representation += 'A | (0,29) | 30 blocks | 16 used blocks\n'
-        expected_representation += 'B | (30,30) | 1 blocks | 1 used blocks\n'
-        expected_representation += 'Total reservado: 31\n'
-
-        self.assertEqual(representantion, expected_representation)
-
     def test_allocate(self):
         system = BuddySystem(120)
         out = system.allocate(16, 'A')
@@ -58,3 +38,23 @@ class TestBuddy(unittest.TestCase):
 
         self.assertEqual(out, 'B liberado. Se liberaron 1 bloques')
         self.assertFalse('B' in system.allocated)
+
+    def test_representacion(self):
+        system = BuddySystem(120)
+        system.allocate(16, 'A')
+        system.allocate(1, 'B')
+        representantion = system.representation()
+
+        expected_representation = '\n-------- Bloques libres: \n'
+        expected_representation += '(31,32) | 2 blocks\n'
+        expected_representation += '(33,36) | 4 blocks\n'
+        expected_representation += '(37,44) | 8 blocks\n'
+        expected_representation += '(45,59) | 15 blocks\n'
+        expected_representation += '(60,119) | 60 blocks\n'
+        expected_representation += 'Total disponible: 89\n'
+        expected_representation += '\n-------- Bloques reservados: \n'
+        expected_representation += 'A | (0,29) | 30 blocks | 16 used blocks\n'
+        expected_representation += 'B | (30,30) | 1 blocks | 1 used blocks\n'
+        expected_representation += 'Total reservado: 31\n'
+
+        self.assertEqual(representantion, expected_representation)
