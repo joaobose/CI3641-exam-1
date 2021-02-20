@@ -84,7 +84,7 @@ def postfixToExpressionTree(postfix):
             # Creamos un nodo operador
             operator = ExpressionTree(char)
 
-            # Como estamos es postfix, los operando son los dos operandos calculados mas recientemente
+            # Como estamos es postfix, los operandos son los dos operandos calculados mas recientemente
             right = stack.pop()
             left = stack.pop()
             operator.right = right
@@ -114,12 +114,12 @@ def prefixToExpressionTree(prefix):
         if not isOperator(char):
             # Retornamos un nodo hoja
             return ExpressionTree(int(char)), start
-        # Case: es un operador
+        # Caso: es un operador
         else:
             # Hacemos parse de la expresion de la izquierda
             (leftExp, leftEnd) = parse(expression, start + 1)
 
-            # Hacemos parce de la expresion de la derecha (a partir de donde termino leftExp)
+            # Hacemos parse de la expresion de la derecha (a partir de donde termino leftExp)
             (rightExp, rightEnd) = parse(expression, leftEnd + 1)
 
             # Creamos el nodo operador
