@@ -1,0 +1,24 @@
+
+int x = 5, y = 9
+
+proc ohno(int x) {
+    y := 2 * x;
+}
+
+proc ohwell(int y, proc waitwhat) {
+    if (y < 10) {
+        proc ohno(int x) {
+            x := y * 2;
+        }
+        ohwell(y + 10, waitwhat);
+    } else if (y < 20) {
+        ohwell(y + 10, ohno);
+    } else {
+        int x = 0;
+        waitwhat(x + y);
+    }
+    print(x, y)
+}
+
+ohwell(x, ohno)
+print(x, y)
